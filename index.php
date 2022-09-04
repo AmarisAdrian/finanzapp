@@ -1,0 +1,69 @@
+<?php 
+namespace index;
+require_once(__DIR__.'/vendor/autoload.php'); 
+?>
+<!doctype html>
+<html lang="es">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./asset/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./asset/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="./asset/font/css/font-awesome.min.css">
+    <script src="./asset/js/sweetalert2.all.js"></script>
+    <link rel="stylesheet" type="text/css" href="./asset/DataTables/datatables.min.css"/>
+    <script type="text/javascript" src="./asset/DataTables/datatables.min.js"></script>
+    <title>Inicio</title>
+  </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-custom text-light text-center">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="row justify-content-center  mx-auto ">
+              <div class="navbar-nav">
+                <a class="text-white nav-link active" aria-current="page" href="./home"><i class="fa fa-home" aria-hidden="true"></i> <b>Home</b></a>
+                <a class="text-white nav-link" href="#"><i class="fa fa-usd" aria-hidden="true"></i> <b>Ingresos</b></a>
+                <a class="text-white nav-link" href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> <b>Gastos</b></a>
+                <a class="text-white nav-link" href="#"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> <b>Deudas</b></a>
+                <a class="text-white nav-link" href="./usuario"><i class="fa fa-user" aria-hidden="true"></i> <b>Usuarios</b></a>
+                <a class="text-white nav-link" href="./salir"><i class="fa fa-sign-out" aria-hidden="true"></i> <b>Salir</b></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <br><br>
+      <?php 
+   if(isset($_GET)){
+    //  $inactivo = 3500;
+    //  $vida_session = time() - $_SESSION['tiempo'];
+    // if($vida_session > $inactivo)
+    // {            
+    //   exit();
+    // } 
+    require_once 'router.php';
+   }else{?>
+    <div class="container">
+      <div class="row">
+          <div class="m-2 col-md-6 align-items-center justify-content-center mx-auto">
+            <form class="form-signin" accept-charset="UTF-8" id="frmlogin" name="frmlogin" role="form" method="POST" action="#">
+              <div class="mb-3 ">
+                <label for="usuario" class="form-label ">Usuario</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" aria-describedby="usuario">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password">
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+             </form>
+          </div>
+        </div>
+    </div>
+ <?php } ?>
+    <script src="./asset/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
+    <script src="./asset/js/datatable.js" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4":{
+            "Controller\\":"controller/",
+            "Core\\":"core/",
+            "Model\\":"model/",
+            "Url\\":"router.php",
+            "index\\":"index.php"
+        }
+    }
+}
