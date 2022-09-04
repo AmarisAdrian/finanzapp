@@ -22,7 +22,7 @@ class Core {
 				$query = $con->prepare($sql);
 				if($query->execute()){
 					if($query->rowCount() > 0){
-						$data = $query->fetchAll(PDO::FETCH_ASSOC);
+						$data = $query->fetchAll(PDO::FETCH_OBJ);
 					}else {
 						return false;
 					}	

@@ -2,7 +2,6 @@
 namespace Controller;
 require_once(__DIR__.'../../vendor/autoload.php'); 
 require_once("./index.php"); 
-
 use PDOException;
 use Core\Core;
 use Model\PagosModel;
@@ -13,7 +12,7 @@ try{
         $pagos->monto = Core::Sanitizar( $_POST['monto']);
         $pagos->fecha = Core::Sanitizar($_POST['fecha']);
         $pagos->user = 1;
-        if($pagos->AddPagos()){
+        if($pagos->AddPago()){
             Core::alert('Correcto','Se ha guardado  el pago correctamente','./home');
         }else{
             Core::alert('Error','No se guardo el pago correctamente','./home');

@@ -22,6 +22,9 @@ $router->mount('', function() use ($router) {
     $router->post('/addpagocontroller', function() {   
         require_once('./controller/AddPagoController.php');
     });
+    $router->post('/editarpagocontroller', function() {   
+        require_once('./controller/EditPagoController.php');
+    });
 });
 $router->set404(function() {
     header('HTTP/1.1 404 Not Found');
