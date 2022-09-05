@@ -1,6 +1,7 @@
 <?php 
 namespace index;
 require_once(__DIR__.'/vendor/autoload.php'); 
+use Core\Core;
 ?>
 <!doctype html>
 <html lang="es">
@@ -36,26 +37,27 @@ require_once(__DIR__.'/vendor/autoload.php');
       </nav>
       <br><br>
       <?php 
-   if(isset($_GET)){
-    //  $inactivo = 3500;
-    //  $vida_session = time() - $_SESSION['tiempo'];
-    // if($vida_session > $inactivo)
-    // {            
-    //   exit();
-    // } 
-    require_once 'router.php';
+    session_start();
+   if(isset($_SESSION['documento'])&&(isset($_SESSION['tiempo']))){
+      $inactivo = 1200;
+      $vida_session = time() - $_SESSION['tiempo'];
+      if($vida_session > $inactivo){        
+        Core::redir_log("./salir");       
+        exit();
+      }
+      require_once 'router.php';
    }else{?>
     <div class="container">
       <div class="row">
           <div class="m-2 col-md-6 align-items-center justify-content-center mx-auto">
-            <form class="form-signin" accept-charset="UTF-8" id="frmlogin" name="frmlogin" role="form" method="POST" action="#">
+            <form class="form-signin" accept-charset="UTF-8" id="frmlogin" name="frmlogin" role="form" method="POST" action="./login">
               <div class="mb-3 ">
-                <label for="usuario" class="form-label ">Usuario</label>
+                <label for="usuario" class="form-label "><b>Usuario</b></label>
                 <input type="text" class="form-control" id="usuario" name="usuario" aria-describedby="usuario">
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password">
+                <label for="password" class="form-label"><b>Password</b></label>
+                <input type="password" class="form-control" id="password" name="password">
               </div>
               <button type="submit" class="btn btn-primary">Login</button>
              </form>

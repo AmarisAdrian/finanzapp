@@ -1,9 +1,8 @@
 <?php 
 require_once('index.php');
 require_once(__DIR__.'/vendor/autoload.php'); 
-use Controller;
 use Controller\GetPagoController;
-
+use Core\Core;
 ?>
 <div class="container">
   <div class="row">
@@ -29,7 +28,7 @@ use Controller\GetPagoController;
         $pagos =GetPagoController::GetAllPagos();
         ?>
         <tr>
-          <form class="form-inline" method="POST" action="./addpagocontroller">
+         <form class="form-inline" method="POST" action="./addpagocontroller">
             <td class="text-center"></td>
             <td class="text-center"><input type="number" class="border border-info form-control" id="monto" name="monto" aria-describedby="monto" placeholder="monto" required></td>
             <td class="text-center"><textarea class="border border-info  form-control" rows="1" placeholder="observacion" id="observacion" name="observacion" required> </textarea></td>

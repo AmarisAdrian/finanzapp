@@ -5,35 +5,30 @@ use PDOException;
 use Core\Core;
 use Model\UsuarioModel;
 
-class LoginController {
-
-    public function __construct(){
-        $this->id = "";
-        $this->documento = "";
-        $this->nombre_completo = "";
-        $this->password = "";
-
-    }
-    public function LoginController(){
-        try{
-            $Usuario = new UsuarioModel ();
-            $Usuario->documento = Core::Sanitizar($this->documento);
-            $Usuario->password = Core::Sanitizar($this->password );
-            if($Usuario->Login()){
-                $data = Core::Serializer("login ok",true,201);
+try{
+    if(!is_null( $_POST['usuario']) && !is_null( $_POST['password'])){  
+        if((isset($_POST["usuario"]))&&(isset($_POST["password"]))){
+            if((is_numeric($_POST["usuario"])) && (ctype_alnum($_POST["password"]))){ 
+                $Usuario = new UsuarioModel ();
+                $Usuario->documento = Core::Sanitizar( $_POST['usuario']);
+                $Usuario->password = Core::Sanitizar($_POST['password']);
+                if($Usuario->Login()){
+                    session_start();
+                    $_SESSION['tiempo'] = time();
+                    $_SESSION['documento'] = $Usuario->documento;
+                    Core::redir_log('./home');
+                } else{
+                    Core::alert("Error","Credenciales invalidas",'./home');
+                }      
             }else{
-               $data = Core::Serializer("Usuario o password incorrectos",false,201);
-            }
-        }catch(PDOException $ex){
-           $data =  Core::Serializer("Excepcion controlada",$ex->getMessage(),500);
-        }
-        return $data;
-    }
-    public static function GetAllClienteController(){
-        try{
-            return UsuarioModel::GetAllUsuario("select * from user");  
-        }catch(PDOException $ex){
-            return Core::Serializer("Excepcion controlada: ",$ex->getMessage(),500);
-        } 
-    }
+                Core::alert("Error","Campos invalidos",'./home');
+            }          
+        }else{
+            Core::alert("Error","Error de validacion",'./home');
+        }  
+    }else{
+        Core::alert("Error","No se pueden ingresar campos nulos",'./home');
+    }  
+}catch(PDOException $ex){
+   Core::alert("Error","Excepcion controlada",$ex->getMessage(),'./home');
 }

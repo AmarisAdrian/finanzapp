@@ -3,6 +3,7 @@ namespace Url;
 require_once(__DIR__.'/vendor/autoload.php'); 
 use Core\Router;
 $router = new Router();
+
 $router->mount('', function() use ($router) {
     $router->get('/index', function() {   
         require_once('index.php');
@@ -19,6 +20,9 @@ $router->mount('', function() use ($router) {
     $router->get('/salir', function() {   
         require_once('salir.php');
     });
+    $router->post('/login', function() {   
+        require_once('./controller/loginController.php');
+    });
     $router->post('/addpagocontroller', function() {   
         require_once('./controller/AddPagoController.php');
     });
@@ -28,6 +32,6 @@ $router->mount('', function() use ($router) {
 });
 $router->set404(function() {
     header('HTTP/1.1 404 Not Found');
-    echo "Error 404. La ruta no existe"; 
+    echo "ERROR 404 . La pagina no existe";
 });
 $router->run();

@@ -42,21 +42,23 @@ class UsuarioModel{
         return Core::ExecuteQuery($Sql);
 	}   
     public function Login(){
-        $Sw = self::GetUserLogin($this->documento ,$this->password);
-        if($Sw!=null || $Sw!=false){
-            $_SESSION['tiempo'] = time();
-            $_SESSION['noDocumento'] = $Sw->noDocumento;
-            $sw = true;        
-        }else if($Sw==false || ($Sw==null)){   
-            $sw = true;                                                            
+        try {
+            $Sw = self::GetUserLogin($this->documento ,$this->password);
+            if($Sw!=null || $Sw!=false){
+                $sw = true;        
+            }else if($Sw==false || ($Sw==null)){   
+                $sw = false;                                                            
+            }
+        } catch(PDOException $ex){
+            return "Excepcion controlada: ".$ex->getMessage();
         }
         return $sw;
     }
     public static function GetUserLogin($noDocumento,$password){
         $user =  self::GetByDocumento($noDocumento);
         try {
-            if($user){
-                $password = Core::HashVerifyPassword($password,$user->password);
+            if($user){             
+               $password = Core::HashVerifyPassword($password,$user->password);
                 if($password){
                     return self::GetByDocumento($noDocumento);
                 } 
@@ -78,7 +80,7 @@ class UsuarioModel{
                 $query->bindParam(':documento',$noDocumento,PDO::PARAM_INT);
 				if($query->execute()){
 					if($query->rowCount() > 0){
-						$data = $query->fetchAll(PDO::FETCH_ASSOC);
+						$data = $query->fetch(PDO::FETCH_OBJ);
 					}else {
 						return false;
 					}	
