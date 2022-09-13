@@ -20,6 +20,9 @@ $router->mount('', function() use ($router) {
     $router->get('/salir', function() {   
         require_once('salir.php');
     });
+    $router->get('/ingresos', function() {   
+        require_once('ingresos.php');
+    });
     $router->post('/login', function() {   
         require_once('./controller/loginController.php');
     });
@@ -28,6 +31,12 @@ $router->mount('', function() use ($router) {
     });
     $router->post('/editarpagocontroller', function() {   
         require_once('./controller/EditPagoController.php');
+    });
+    $router->post('/addingresocontroller', function() {   
+        require_once('./controller/AddIngresoController.php');
+    });
+    $router->post('/editingresocontroller', function() {   
+        require_once('./controller/EditIngresoController.php');
     });
 });
 $router->set404(function() {

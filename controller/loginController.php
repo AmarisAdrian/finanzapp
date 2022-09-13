@@ -13,22 +13,24 @@ try{
                 $Usuario->documento = Core::Sanitizar( $_POST['usuario']);
                 $Usuario->password = Core::Sanitizar($_POST['password']);
                 if($Usuario->Login()){
+                    $usuario = UsuarioModel::GetByDocumento($Usuario->documento);
                     session_start();
                     $_SESSION['tiempo'] = time();
-                    $_SESSION['documento'] = $Usuario->documento;
+                    $_SESSION['id'] = $usuario->id;
+                    $_SESSION['documento'] = $usuario->documento;
                     Core::redir_log('./home');
                 } else{
-                    Core::alert("Error","Credenciales invalidas",'./home');
+                    Core::redir("Credenciales invalidas",'./home');
                 }      
             }else{
-                Core::alert("Error","Campos invalidos",'./home');
+                Core::redir("Campos invalidos",'./home');
             }          
         }else{
-            Core::alert("Error","Error de validacion",'./home');
+            Core::redir("Error de validacion",'./home');
         }  
     }else{
-        Core::alert("Error","No se pueden ingresar campos nulos",'./home');
+        Core::redir("No se pueden ingresar campos nulos",'./home');
     }  
 }catch(PDOException $ex){
-   Core::alert("Error","Excepcion controlada",$ex->getMessage(),'./home');
+   Core::redir("Excepcion controlada",$ex->getMessage(),'./home');
 }
