@@ -1,6 +1,7 @@
 <?php 
 namespace index;
 require_once(__DIR__.'/vendor/autoload.php'); 
+use Core\Core;
 ?>
 <!doctype html>
 <html lang="es">
@@ -24,7 +25,7 @@ require_once(__DIR__.'/vendor/autoload.php');
             <div class="row justify-content-center  mx-auto ">
               <div class="navbar-nav">
                 <a class="text-white nav-link active" aria-current="page" href="./home"><i class="fa fa-home" aria-hidden="true"></i> <b>Home</b></a>
-                <a class="text-white nav-link" href="#"><i class="fa fa-usd" aria-hidden="true"></i> <b>Ingresos</b></a>
+                <a class="text-white nav-link" href="./ingresos"><i class="fa fa-usd" aria-hidden="true"></i> <b>Ingresos</b></a>
                 <a class="text-white nav-link" href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> <b>Gastos</b></a>
                 <a class="text-white nav-link" href="#"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> <b>Deudas</b></a>
                 <a class="text-white nav-link" href="./usuario"><i class="fa fa-user" aria-hidden="true"></i> <b>Usuarios</b></a>
@@ -36,26 +37,28 @@ require_once(__DIR__.'/vendor/autoload.php');
       </nav>
       <br><br>
       <?php 
-   if(isset($_GET)){
-    //  $inactivo = 3500;
-    //  $vida_session = time() - $_SESSION['tiempo'];
-    // if($vida_session > $inactivo)
-    // {            
-    //   exit();
-    // } 
-    require_once 'router.php';
+    session_start();
+   if(isset($_SESSION['documento'])&&(isset($_SESSION['tiempo']))){
+      $inactivo = 1200;
+      $vida_session = time() - $_SESSION['tiempo'];
+      if($vida_session > $inactivo){        
+        Core::redir_log("./salir");       
+        exit();
+      }else{
+        require_once 'router.php';
+      }  
    }else{?>
     <div class="container">
       <div class="row">
           <div class="m-2 col-md-6 align-items-center justify-content-center mx-auto">
-            <form class="form-signin" accept-charset="UTF-8" id="frmlogin" name="frmlogin" role="form" method="POST" action="#">
+            <form class="form-signin" accept-charset="UTF-8" id="frmlogin" name="frmlogin" role="form" method="POST" action="./login">
               <div class="mb-3 ">
-                <label for="usuario" class="form-label ">Usuario</label>
+                <label for="usuario" class="form-label "><b>Usuario</b></label>
                 <input type="text" class="form-control" id="usuario" name="usuario" aria-describedby="usuario">
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password">
+                <label for="password" class="form-label"><b>Password</b></label>
+                <input type="password" class="form-control" id="password" name="password">
               </div>
               <button type="submit" class="btn btn-primary">Login</button>
              </form>
