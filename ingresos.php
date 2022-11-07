@@ -5,8 +5,7 @@ use Controller\IngresoController;
 use Core\Core;
 if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){      
     Core::redir_log("./salir");       
-}
-?>
+}?>
 <div class="container">
   <div class="row">
     <h3 id="menu_tabla_ingresos">Ingresos &nbsp; </h3>
