@@ -38,6 +38,12 @@ $router->mount('', function() use ($router) {
     $router->post('/editingresocontroller', function() {   
         require_once('./controller/EditIngresoController.php');
     });
+    $router->post('/addusuariocontroller', function() {   
+        require_once('./controller/AddUsuarioController.php');
+    });
+    $router->post('/editusuariocontroller', function() {   
+        require_once('./controller/EditUsuarioController.php');
+    });
 });
 $router->set404(function() {
     header('HTTP/1.1 404 Not Found');
