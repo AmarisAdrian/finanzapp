@@ -23,6 +23,9 @@ $router->mount('', function() use ($router) {
     $router->get('/ingresos', function() {   
         require_once('ingresos.php');
     });
+    $router->get('/deudas', function() {   
+        require_once('deudas.php');
+    });
     $router->post('/login', function() {   
         require_once('./controller/loginController.php');
     });
@@ -43,6 +46,12 @@ $router->mount('', function() use ($router) {
     });
     $router->post('/editusuariocontroller', function() {   
         require_once('./controller/EditUsuarioController.php');
+    });
+    $router->post('/adddeudacontroller', function() {   
+        require_once('./controller/AddDeudaController.php');
+    });
+    $router->post('/editdeudacontroller', function() {   
+        require_once('./controller/EditDeudaController.php');
     });
 });
 $router->set404(function() {
