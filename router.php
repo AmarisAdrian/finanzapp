@@ -26,6 +26,12 @@ $router->mount('', function() use ($router) {
     $router->get('/deudas', function() {   
         require_once('deudas.php');
     });
+    $router->get('/gastos-fijos', function() {   
+        require_once('gastos_fijos.php');
+    });
+    $router->get('/abonar/(\w+)', function($name) {
+        require_once('abonar_deuda.php');
+    });
     $router->post('/login', function() {   
         require_once('./controller/loginController.php');
     });
@@ -53,6 +59,7 @@ $router->mount('', function() use ($router) {
     $router->post('/editdeudacontroller', function() {   
         require_once('./controller/EditDeudaController.php');
     });
+
 });
 $router->set404(function() {
     header('HTTP/1.1 404 Not Found');
