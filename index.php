@@ -26,7 +26,7 @@ use Core\Core;
               <div class="navbar-nav">
                 <a class="text-white nav-link active" aria-current="page" href="./home"><i class="fa fa-home" aria-hidden="true"></i> <b>Home</b></a>
                 <a class="text-white nav-link" href="./ingresos"><i class="fa fa-usd" aria-hidden="true"></i> <b>Ingresos</b></a>
-                <a class="text-white nav-link" href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> <b>Gastos</b></a>
+                <a class="text-white nav-link" href="./gastos-fijos"><i class="fa fa-bar-chart" aria-hidden="true"></i> <b>Gastos fijos</b></a>
                 <a class="text-white nav-link" href="./deudas"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> <b>Deudas</b></a>
                 <a class="text-white nav-link" href="./usuario"><i class="fa fa-user" aria-hidden="true"></i> <b>Usuarios</b></a>
                 <a class="text-white nav-link" href="./salir"><i class="fa fa-sign-out" aria-hidden="true"></i> <b>Salir</b></a>

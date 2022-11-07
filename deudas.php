@@ -20,12 +20,12 @@ if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){
         <tr>
           <th class="text-center" scope="col">#</th>
           <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Nombre</th>
-          <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Deuda_total</th>
-          <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Valor_cuota</th>
-          <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Total_cuota</th>
+          <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Deuda total</th>
+          <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Valor cuota</th>
+          <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Total cuota</th>
           <th class="text-center" scope="col"><i class="fa fa-calendar" aria-hidden="true"></i> Fecha</th>
-          <th class="text-center" scope="col"></th>
-          <th class="text-center" scope="col"></th>
+          <th class="text-center" style="width:130px;" scope="col"></th>
+          <th class="text-center" style="width:130px;" scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -60,8 +60,11 @@ if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){
               <td class="text-center"><input type="number" class="form-control" id="total_cuota" name="total_cuota" aria-describedby="total_cuota" placeholder="total_cuota" value="<?php echo $deudas->total_cuota; ?>" required></td>
               <td class="text-center"><input type="date" class="form-control" id="fecha" name="fecha" aria-describedby="fecha" value="<?php echo $deudas->fecha; ?>" placeholder="fecha" required></td>
               <td class="text-center">
-                <input type="hidden" id="id" name="id" value="<?php echo $deudas->id; ?>">
+              <input type="hidden" id="id" name="id" value="<?php echo $deudas->id; ?>">
                 <button type="submit" class="btn btn-success "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button>
+              </td>
+              <td>
+                <a type="button" class="btn btn-secondary" href="./abonar/<?php echo $deudas->id; ?>"><i class="fa fa-plus" aria-hidden="true"></i> Abonar</button>
               </td>
             </form>
           </tr>
