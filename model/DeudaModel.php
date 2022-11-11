@@ -5,27 +5,25 @@ use PDO,PDOException;
 use Core\Database;
 use Core\Core;
 
-class PagosModel{
+class DeudaModel{
 
-    static $TableName = "pagos"; 
+    static $TableName = "deuda"; 
 
     function __construct(){
-        $this->id = "";
-        $this->observacion = "";
-        $this->monto = "";
-        $this->fecha = "";
-        $this->user = "";
+        
     }
-    public function AddPago(){
+    public function AddDeuda(){
         $bool = false;
         try {
             $Database = new Database();
             $con = $Database->Connect();
             $con->beginTransaction();
-            $stmt = $con->prepare("INSERT INTO ".self::$TableName."(observacion,monto,fecha,user)VALUES(:observacion,:monto,:fecha,:user)");
-            $stmt->bindParam(':observacion', $this->observacion,PDO::PARAM_INT);
-            $stmt->bindParam(':monto',  $this->monto,PDO::PARAM_STR);
-            $stmt->bindParam(':fecha', $this->fecha, PDO::PARAM_STR);
+            $stmt = $con->prepare("INSERT INTO ".self::$TableName."(nombre,deuda_total,valor_cuota,total_cuota,fecha,user)VALUES(:nombre,:deuda_total,:valor_cuota,:total_cuota,:fecha,:user)");
+            $stmt->bindParam(':nombre', $this->nombre,PDO::PARAM_STR);
+            $stmt->bindParam(':deuda_total',  $this->deuda_total,PDO::PARAM_INT);
+            $stmt->bindParam(':valor_cuota', $this->valor_cuota, PDO::PARAM_INT);
+            $stmt->bindParam(':total_cuota',  $this->total_cuota,PDO::PARAM_INT);
+            $stmt->bindParam(':fecha',  $this->fecha,PDO::PARAM_STR);
             $stmt->bindParam(':user',  $this->user,PDO::PARAM_INT);
             if($stmt->execute()){
                 $con->commit();
@@ -42,17 +40,19 @@ class PagosModel{
         }
         return $bool;  
     }
-    public function UpdatePago(){
+    public function UpdateDeuda(){
         $bool = false;
         try {
             $Database = new Database();
             $con = $Database->Connect();
             $con->beginTransaction();
-            $stmt = $con->prepare("UPDATE ".self::$TableName." SET observacion=:observacion,monto=:monto,fecha=:fecha,user=:user where id=:id");
+            $stmt = $con->prepare("UPDATE ".self::$TableName." SET nombre=:nombre,deuda_total=:deuda_total,valor_cuota=:valor_cuota,total_cuota=:total_cuota,fecha=:fecha, user=:user where id=:id");
             $stmt->bindParam(':id', $this->id,PDO::PARAM_INT);
-            $stmt->bindParam(':observacion', $this->observacion,PDO::PARAM_STR);
-            $stmt->bindParam(':monto',  $this->monto,PDO::PARAM_STR);
-            $stmt->bindParam(':fecha', $this->fecha, PDO::PARAM_STR);
+            $stmt->bindParam(':nombre', $this->nombre,PDO::PARAM_STR);
+            $stmt->bindParam(':deuda_total',  $this->deuda_total,PDO::PARAM_INT);
+            $stmt->bindParam(':valor_cuota', $this->valor_cuota, PDO::PARAM_INT);
+            $stmt->bindParam(':total_cuota',  $this->total_cuota,PDO::PARAM_INT);
+            $stmt->bindParam(':fecha',  $this->fecha,PDO::PARAM_STR);
             $stmt->bindParam(':user',  $this->user,PDO::PARAM_INT);
             if($stmt->execute()){
                 $con->commit();
@@ -91,7 +91,7 @@ class PagosModel{
 		}
 		return $data;	
      }
-    public static function GetAllPagos($Sql){
+    public static function GetAllDeuda($Sql){
         return Core::ExecuteQuery($Sql);
 	}   
 }

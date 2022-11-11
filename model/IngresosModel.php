@@ -5,26 +5,26 @@ use PDO,PDOException;
 use Core\Database;
 use Core\Core;
 
-class PagosModel{
+class IngresosModel{
 
-    static $TableName = "pagos"; 
+    static $TableName = "ingresos"; 
 
     function __construct(){
         $this->id = "";
-        $this->observacion = "";
-        $this->monto = "";
+        $this->nombre = "";
+        $this->valor_ingreso = "";
         $this->fecha = "";
         $this->user = "";
     }
-    public function AddPago(){
+    public function Addingreso(){
         $bool = false;
         try {
             $Database = new Database();
             $con = $Database->Connect();
             $con->beginTransaction();
-            $stmt = $con->prepare("INSERT INTO ".self::$TableName."(observacion,monto,fecha,user)VALUES(:observacion,:monto,:fecha,:user)");
-            $stmt->bindParam(':observacion', $this->observacion,PDO::PARAM_INT);
-            $stmt->bindParam(':monto',  $this->monto,PDO::PARAM_STR);
+            $stmt = $con->prepare("INSERT INTO ".self::$TableName."(nombre,valor_ingreso,fecha,user)VALUES(:nombre,:valor_ingreso,:fecha,:user)");
+            $stmt->bindParam(':nombre', $this->nombre,PDO::PARAM_STR);
+            $stmt->bindParam(':valor_ingreso',  $this->valor_ingreso,PDO::PARAM_INT);
             $stmt->bindParam(':fecha', $this->fecha, PDO::PARAM_STR);
             $stmt->bindParam(':user',  $this->user,PDO::PARAM_INT);
             if($stmt->execute()){
@@ -42,16 +42,16 @@ class PagosModel{
         }
         return $bool;  
     }
-    public function UpdatePago(){
+    public function UpdateIngresos(){
         $bool = false;
         try {
             $Database = new Database();
             $con = $Database->Connect();
             $con->beginTransaction();
-            $stmt = $con->prepare("UPDATE ".self::$TableName." SET observacion=:observacion,monto=:monto,fecha=:fecha,user=:user where id=:id");
+            $stmt = $con->prepare("UPDATE ".self::$TableName." SET nombre=:nombre,valor_ingreso=:valor_ingreso,fecha=:fecha,user=:user where id=:id");
             $stmt->bindParam(':id', $this->id,PDO::PARAM_INT);
-            $stmt->bindParam(':observacion', $this->observacion,PDO::PARAM_STR);
-            $stmt->bindParam(':monto',  $this->monto,PDO::PARAM_STR);
+            $stmt->bindParam(':nombre', $this->nombre,PDO::PARAM_STR);
+            $stmt->bindParam(':valor_ingreso',  $this->valor_ingreso,PDO::PARAM_INT);
             $stmt->bindParam(':fecha', $this->fecha, PDO::PARAM_STR);
             $stmt->bindParam(':user',  $this->user,PDO::PARAM_INT);
             if($stmt->execute()){
@@ -91,7 +91,7 @@ class PagosModel{
 		}
 		return $data;	
      }
-    public static function GetAllPagos($Sql){
+    public static function GetAllIngresos($Sql){
         return Core::ExecuteQuery($Sql);
 	}   
 }
