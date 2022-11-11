@@ -13,6 +13,7 @@ use Core\Core;
     <script src="./asset/js/sweetalert2.all.js"></script>
     <link rel="stylesheet" type="text/css" href="./asset/DataTables/datatables.min.css"/>
     <script type="text/javascript" src="./asset/DataTables/datatables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <title>Inicio</title>
   </head>
     <body>
