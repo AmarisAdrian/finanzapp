@@ -64,7 +64,7 @@ if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){
                 <button type="submit" class="btn btn-success "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button>
               </td>
               <td>
-                <a type="button" class="btn btn-secondary" href="./abonar/<?php echo $deudas->id; ?>"><i class="fa fa-plus" aria-hidden="true"></i> Abonar</button>
+                <a type="button" class="btn btn-secondary" href="./deudas/abonar/<?php echo $deudas->id; ?>"><i class="fa fa-plus" aria-hidden="true"></i> Abonar</button>
               </td>
             </form>
           </tr>

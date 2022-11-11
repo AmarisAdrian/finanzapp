@@ -29,7 +29,7 @@ $router->mount('', function() use ($router) {
     $router->get('/gastos-fijos', function() {   
         require_once('gastos_fijos.php');
     });
-    $router->get('/abonar/{id}/', function() {
+    $router->get('/deudas/abonar/(\d+)', function() {
         require_once('abonar_deuda.php');
     });
     $router->post('/login', function() {   

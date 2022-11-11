@@ -2,3 +2,4 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . router.php [L]
+RewriteRule ^asset/(.*)?$ asset/$1 [NC,L]

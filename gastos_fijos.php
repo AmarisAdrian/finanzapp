@@ -23,7 +23,7 @@ if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){
           <th class="text-center" scope="col"><i class="fa fa-usd" aria-hidden="true"></i> Mes Ciclo</th>
           <th class="text-center" scope="col"><i class="fa fa-calendar" aria-hidden="true"></i>  Observaciones</th>
           <th class="text-center" scope="col"><i class="fa fa-calendar" aria-hidden="true"></i>  Valor</th>
-          <th class="text-center" scope="col"></th>
+          <th class="text-center" style="width:250px ;" scope="col"></th>
         </tr>
       </thead>
       <tbody>
