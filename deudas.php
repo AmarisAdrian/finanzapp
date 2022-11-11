@@ -8,7 +8,7 @@ if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){
 }?>
 <div class="container">
   <div class="row">
-    <h3 id="menu_tabla_ingresos">Deudas &nbsp; </h3>
+    <h3 id="menu_tabla_deudas">Deudas &nbsp; </h3>
     <div class="btn-group" role="group" aria-label="Basic outlined example">
     </div>
     <hr>
@@ -22,7 +22,7 @@ if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){
           <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Nombre</th>
           <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Deuda total</th>
           <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Valor cuota</th>
-          <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Total cuota</th>
+          <th class="text-center" scope="col"><i class="fa fa-pencil" aria-hidden="true"></i> Total cuotas</th>
           <th class="text-center" scope="col"><i class="fa fa-calendar" aria-hidden="true"></i> Fecha</th>
           <th class="text-center" style="width:130px;" scope="col"></th>
           <th class="text-center" style="width:130px;" scope="col"></th>

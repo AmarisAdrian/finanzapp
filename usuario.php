@@ -9,7 +9,7 @@ if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){
 ?>
 <div class="container">
   <div class="row">
-    <h3 id="menu_tabla_usuario">Usuarios &nbsp; </h3>
+    <h3 id="menu_tabla_usuarios">Usuarios &nbsp; </h3>
     <div class="btn-group" role="group" aria-label="Basic outlined example">
     </div>
     <hr>

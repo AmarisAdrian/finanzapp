@@ -29,7 +29,7 @@ $router->mount('', function() use ($router) {
     $router->get('/gastos-fijos', function() {   
         require_once('gastos_fijos.php');
     });
-    $router->get('/abonar/(\w+)', function($name) {
+    $router->get('/abonar/{id}/', function() {
         require_once('abonar_deuda.php');
     });
     $router->post('/login', function() {   
@@ -58,6 +58,12 @@ $router->mount('', function() use ($router) {
     });
     $router->post('/editdeudacontroller', function() {   
         require_once('./controller/EditDeudaController.php');
+    });
+    $router->post('/addgastosfijoscontroller', function() {   
+        require_once('./controller/AddGastosFijosController.php');
+    });
+    $router->post('/editgastosfijoscontroller', function() {   
+        require_once('./controller/EditGastosFijosController.php');
     });
 
 });
