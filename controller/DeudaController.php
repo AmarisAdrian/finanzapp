@@ -13,4 +13,11 @@ class DeudaController{
             Core::alert('Error ', $ex->getMessage(),'./home');
         }     
     }
+    public static function GetDeudaById($id){
+        try{
+            return DeudaModel::GetById($id);
+        }catch(PDOException $ex){
+            Core::alert('Error ', $ex->getMessage(),'./home');
+        }     
+    }
 }

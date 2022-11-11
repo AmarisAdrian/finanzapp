@@ -29,7 +29,8 @@ $router->mount('', function() use ($router) {
     $router->get('/gastos-fijos', function() {   
         require_once('gastos_fijos.php');
     });
-    $router->get('/deudas/abonar/(\d+)', function() {
+    $router->get('/deudas/abonar/{id}', function($id){
+        $_GET["id"] = $id;
         require_once('abonar_deuda.php');
     });
     $router->post('/login', function() {   

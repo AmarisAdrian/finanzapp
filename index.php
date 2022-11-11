@@ -1,8 +1,7 @@
 <?php 
 namespace index;
 require_once(__DIR__.'/vendor/autoload.php'); 
-use Core\Core;
-?>
+use Core\Core; ?>
 <!doctype html>
 <html lang="es">
   <head>

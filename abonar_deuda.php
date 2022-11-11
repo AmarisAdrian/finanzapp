@@ -5,38 +5,39 @@ use Controller\DeudaController;
 use Core\Core;
 if(!isset($_SESSION['documento'])&&(!isset($_SESSION['tiempo']))){      
     Core::redir_log("./salir");       
-}?>
-
+}
+if(isset($_GET['id'])&&(!empty($_GET['id']))){
+ $deuda = DeudaController::GetDeudaById($_GET['id']);?>
 <div class="container">
-    <section class="d-flex justify-content-center">
-        <div class= "card col-sm-5 p-2">
-            <button class = "btn btn-primary" ></button>
-            <div class="mb-2">
-                <hr>
-                <h4>Abonar</h4>
-                <hr>
-            </div>
-            <div class="mb-2">
-                <form action="./deudas">
-                    <div class="mb-2">
-                        <label for="valor">Valor</label>
-                        <input type="text" name="valor" class="form-control" id="valor" placeholder="Valor">
+    <div class="m-2 d-flex justify-content-center">
+        <div class= "card  border border-custom" style="width: 60rem;">
+            <div class="card-header bg-custom "><b> ABONAR DEUDA :</b> <?php  echo $deuda->nombre; ?></div>
+            <div class="card-body">
+                <form action="#" method="post" >
+                    <div class="input-group-lg form-group">
+                        <label for="valor">Valor a abonar</label>
+                        <input type="number" name="valor" class="form-control" id="valor" placeholder="Valor" value="">
                     </div>
-                    <div class="mb-2">
+                    <div class="input-group-lg form-group">
                         <label for="valor">Fecha Abono</label>
-                        <input type="text" name="Fecha_Abono" class="form-control" id="Fecha_Abono" placeholder="Fecha Abono">
+                        <input type="date" name="fecha_abono" class="form-control" id="fecha_abono" placeholder="Fecha Abono">
                     </div>
-                    <div class="mb-2">
+                    <div class="input-group-lg form-group">
                         <label for="valor">Observaciones</label>
-                        <input type="text" name="Observaciones" class="form-control" id="Observaciones" placeholder="Observaciones">
+                        <textarea type="text" name="Observaciones" class="form-control" id="Observaciones" placeholder="Observaciones"></textarea>
                     </div>
                     <hr>
                         <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Guardar</button>
-                        <button action="./deudas" type="exit" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Cancelar</button>
+                        <button class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Cancelar</button>
+                        <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $_GET["id"]; ?>" placeholder="Valor">
                 </form>
             </div>
-            <hr>
-            <button class = "btn btn-primary" ></button>
         </div>
-    </section>
+    </div>
 </div>
+<?php }else {  ?>
+    <div class="container">
+        <div class="alert alert-danger">Error de validación</div>
+    </div>
+  
+<?php } ?>
